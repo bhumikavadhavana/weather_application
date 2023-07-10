@@ -30,36 +30,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     "Sky Scrapper",
-      //     style: TextStyle(
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 24,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      //   leading: Icon(
-      //     Icons.add,
-      //     size: 30,
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         Provider.of<ThemeProvider>(context, listen: false).changeTheme();
-      //       },
-      //       icon: (Provider.of<ThemeProvider>(context).themeModel.isDark)
-      //           ? const Icon(Icons.mode_night)
-      //           : const Icon(Icons.light_mode_rounded),
-      //     ),
-      //   ],
-      // ),
       body: (Provider.of<ConnectivityProvider>(context)
                   .connectitvityModel
                   .connectivitystatus ==
               "Waiting..")
           ? const Center(
-              child: Text("No Data Connection"),
+              child: Text("No Data"),
             )
           : FutureBuilder(
               future: Provider.of<WeatherProvider>(context, listen: false)
@@ -85,8 +61,8 @@ class _HomePageState extends State<HomePage> {
                                   image: (Provider.of<ThemeProvider>(context)
                                           .themeModel
                                           .isDark)
-                                      ? AssetImage("assets/image/m1.jpg")
-                                      : AssetImage("assets/image/m3.jpg"),
+                                      ? AssetImage("assets/image/m4.jpg")
+                                      : AssetImage("assets/image/dark.gif"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -101,20 +77,20 @@ class _HomePageState extends State<HomePage> {
                                       onSubmitted: (String name) async {
                                         if (name.isNotEmpty) {
                                           Provider.of<WeatherProvider>(context,
-                                              listen: false)
+                                                  listen: false)
                                               .locationchanage(name);
                                         } else {
                                           Provider.of<WeatherProvider>(context,
-                                              listen: false)
+                                                  listen: false)
                                               .locationchanage(
-                                              Provider.of<WeatherProvider>(
-                                                  context)
-                                                  .location);
+                                                  Provider.of<WeatherProvider>(
+                                                          context)
+                                                      .location);
                                         }
                                       },
                                       controller:
-                                      Provider.of<WeatherProvider>(context)
-                                          .citynamecontroller,
+                                          Provider.of<WeatherProvider>(context)
+                                              .citynamecontroller,
                                       decoration: InputDecoration(
                                         fillColor: Colors.transparent,
                                         filled: true,
@@ -136,10 +112,7 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pushNamed(
-                                                'manage_cities_page');
-                                          },
+                                          onPressed: () {},
                                           icon: Icon(
                                             CupertinoIcons.add,
                                             size: 30,
@@ -155,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                                               style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
-                                              color: Colors.white),
+                                                  color: Colors.white),
                                             ),
                                             Row(
                                               mainAxisAlignment:
@@ -172,9 +145,8 @@ class _HomePageState extends State<HomePage> {
                                                 Text(
                                                   ", ${weatherdata.country}",
                                                   style: const TextStyle(
-                                                    fontSize: 18,
-                                                    color: Colors.white
-                                                  ),
+                                                      fontSize: 18,
+                                                      color: Colors.white),
                                                 ),
                                               ],
                                             ),
@@ -185,17 +157,22 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         IconButton(
                                           onPressed: () {
-                                            Navigator.of(context)
-                                                .pushNamed('setting_page');
+                                            Provider.of<ThemeProvider>(context,
+                                                    listen: false)
+                                                .changeTheme();
                                           },
-                                          icon: Icon(
-                                            Icons.more_vert,
-                                            color: Colors.white,
-                                          ),
+                                          icon: (Provider.of<ThemeProvider>(
+                                                      context)
+                                                  .themeModel
+                                                  .isDark)
+                                              ? const Icon(Icons.mode_night)
+                                              : const Icon(
+                                                  Icons.light_mode_rounded,
+                                                  color: Colors.white,
+                                                ),
                                         ),
                                       ],
                                     ),
-
                                     SizedBox(
                                       height: 50,
                                     ),
@@ -268,17 +245,6 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                                 SizedBox(
                                                   width: 20,
-                                                ),
-                                                Column(
-                                                  children: [
-                                                    Text(
-                                                      "Mostly ${weatherdata.text}",
-                                                      style: TextStyle(
-                                                        fontSize: 20,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
                                               ],
                                             ),

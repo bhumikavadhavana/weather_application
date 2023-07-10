@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../controller/provider/themeprovider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,19 +19,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Container(
-        height: 190,
-        width: 200,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMsnJ_fRH4k_Z9uFoxKnxjhuZu6qM9LqWdrQ&usqp=CAU"),
-            fit: BoxFit.fill
+      body: Center(
+        child: Container(
+          height: 200,
+          width: 200,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(
+                    "https://cdn.dribbble.com/users/637473/screenshots/9160159/media/6f30ada707e36cfb98d953486e69c1dd.gif"),
+                fit: BoxFit.fill),
           ),
         ),
       ),
-    ));
+      backgroundColor: Colors.white,
+    );
   }
 }
