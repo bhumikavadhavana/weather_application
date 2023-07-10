@@ -46,7 +46,9 @@ the weather data in depth for the selected  location.
 
 
 
-https://github.com/bhumikavadhavana/weather_app/assets/131368253/7fd7fc74-7def-4ac0-8bc6-88f440b1932b
+https://github.com/bhumikavadhavana/weather_application/assets/131368253/77bed92a-4654-4df6-9e56-98c55373b9b2
+
+
 
 
 
